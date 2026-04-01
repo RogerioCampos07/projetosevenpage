@@ -18,7 +18,7 @@ class FrameworkAdmin(admin.ModelAdmin):
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
     # 1. Adicionamos a visualização da imagem na lista
-    list_display = ('get_thumbnail', 'title', 'category', 'created_at')
+    list_display = ('get_thumbnail', 'title', 'category', 'framework', 'created_at')
     list_filter = ('category', 'languages', 'frameworks', 'created_at')
     search_fields = ('title', 'description')
     filter_horizontal = ('languages', 'frameworks')
