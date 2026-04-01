@@ -1,0 +1,45 @@
+[project]
+name = "projetosevenpage"
+version = "0.1.0"
+description = "Web application for project portfolio"
+authors = [
+    {name = "Rogerio Campos",email = "rogerio.campos07@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.14,<4.0"
+dependencies = [
+    "django (>=6.0.3,<7.0.0)",
+    "gunicorn (>=25.3.0,<26.0.0)",
+    "psycopg2-binary (>=2.9.11,<3.0.0)",
+    "pydantic-settings (>=2.13.1,<3.0.0)"
+]
+
+[tool.ruff]
+exclude = ['settings.py','manage.py']
+line-length = 79
+extend-exclude = ['migrations', '.venv', 'venv', '.env']
+
+[tool.ruff.lint]
+preview = true
+select = ['I', 'F', 'E', 'W', 'PL', 'PT']
+
+[tool.ruff.format]
+preview = true
+quote-style = 'single'
+
+[tool.taskipy.tasks]
+lint = 'ruff check'
+pre_format = 'ruff check --fix'
+format = 'ruff format'
+pre_test = 'task lint'
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "taskipy (>=1.14.1,<2.0.0)",
+    "ruff (>=0.15.8,<0.16.0)"
+]
