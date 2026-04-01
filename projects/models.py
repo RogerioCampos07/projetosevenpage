@@ -19,7 +19,7 @@ class Project(models.Model):
     
     title = models.CharField(max_length=200)
     description = models.TextField()
-    thumbnail = models.ImageField(upload_to='projects/thumbnails/')
+    thumbnail = models.ImageField(upload_to='projects/thumbnails/', null=True, blank=True)
     
     github_link = models.URLField(max_length=200, null=True, blank=True)
     youtube_link = models.URLField(max_length=200, null=True, blank=True)
