@@ -16,7 +16,7 @@ class StackAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     # 1. Adicionamos a visualização da imagem na lista
     list_display = ('get_thumbnail', 'title', 'category', 'created_at')
-    list_filter = ('category', 'created_at')
+    list_filter = ('category', 'stacks', 'created_at')
     search_fields = ('title', 'description')
     filter_horizontal = ('stacks',) 
     
@@ -25,7 +25,7 @@ class ProjectAdmin(admin.ModelAdmin):
     # 3. Organização Visual dos Campos (Fieldsets)
     fieldsets = (
         ('Informações Básicas', {
-            'fields': ('title', 'category', 'description', 'thumbnail')
+            'fields': ('title', 'category', 'stacks', 'description', 'thumbnail')
         }),
         
         ('Links e Demonstração', {
